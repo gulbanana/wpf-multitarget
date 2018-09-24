@@ -1,16 +1,27 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Wpf">
+﻿<Project>
+  <Import Sdk="Microsoft.NET.Sdk" Project="Sdk.props" />
+  <Import Condition=" '$(TargetFramework)' == 'netcoreapp3.0' " Sdk="Microsoft.NET.Sdk.Wpf" Project="../targets/Microsoft.NET.Sdk.Wpf.props" />
+  
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <TargetFrameworks>netcoreapp3.0;net472</TargetFrameworks>
     <OutputType>Library</OutputType>
   </PropertyGroup>
 
-  <ItemGroup>
+  <ItemGroup Condition=" '$(TargetFramework)' == 'netcoreapp3.0' ">
     <FrameworkReference Include="Microsoft.DesktopUI" />
+  </ItemGroup>
+  
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net472' ">
+    <Reference Include="System.Xaml" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
 
   <ItemGroup>
-    <!-- SDK does not yet provide a glob for Pages, which include usercontrols and resource dictionaries.
-         The Generator metadatum is not strictly required but without it Visual Studio will add None Update tags -->
     <Page Include="**/*.xaml" Generator="MSBuild:Compile" />
   </ItemGroup>
+  
+  <Import Sdk="Microsoft.NET.Sdk" Project="Sdk.targets" />
+  <Import Condition=" '$(TargetFramework)' == 'netcoreapp3.0' " Sdk="Microsoft.NET.Sdk.Wpf" Project="../targets/Microsoft.NET.Sdk.Wpf.targets" />
 </Project>
