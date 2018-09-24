@@ -1,0 +1,11 @@
+﻿<Window x:Class="coreapp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:coreapp"
+        xmlns:shared="clr-namespace:sharedlib;assembly=sharedlib"
+        Title="MainWindow" SizeToContent="WidthAndHeight">
+    <StackPanel Orientation="Horizontal">
+        <local:BlueBox />
+        <shared:RedBox />
+    </StackPanel>
+</Window>

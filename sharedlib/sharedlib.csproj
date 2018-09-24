@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Wpf">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <OutputType>Library</OutputType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.DesktopUI" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- SDK does not yet provide a glob for Pages, which include usercontrols and resource dictionaries.
+         The Generator metadatum is not strictly required but without it Visual Studio will add None Update tags -->
+    <Page Include="**/*.xaml" Generator="MSBuild:Compile" />
+  </ItemGroup>
+</Project>
