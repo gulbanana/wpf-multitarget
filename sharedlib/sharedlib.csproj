@@ -1,27 +1,22 @@
 ﻿<Project>
   <Import Sdk="Microsoft.NET.Sdk" Project="Sdk.props" />
-  <Import Condition=" '$(TargetFramework)' == 'netcoreapp3.0' " Sdk="Microsoft.NET.Sdk.Wpf" Project="../targets/Microsoft.NET.Sdk.Wpf.props" />
-  
+  <Import Condition=" '$(TargetFramework)' == 'netcoreapp3.0' " Sdk="Microsoft.NET.Sdk.WindowsDesktop" Project="../targets/Microsoft.NET.Sdk.WindowsDesktop.props" />
+
   <PropertyGroup>
     <TargetFrameworks>netcoreapp3.0;net472</TargetFrameworks>
     <OutputType>Library</OutputType>
+    <UseWpf>true</UseWpf>
   </PropertyGroup>
 
-  <ItemGroup Condition=" '$(TargetFramework)' == 'netcoreapp3.0' ">
-    <FrameworkReference Include="Microsoft.DesktopUI" />
-  </ItemGroup>
-  
   <ItemGroup Condition=" '$(TargetFramework)' == 'net472' ">
     <Reference Include="System.Xaml" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="WindowsBase" />
-  </ItemGroup>
 
-  <ItemGroup>
     <Page Include="**/*.xaml" Generator="MSBuild:Compile" />
   </ItemGroup>
-  
+
   <Import Sdk="Microsoft.NET.Sdk" Project="Sdk.targets" />
-  <Import Condition=" '$(TargetFramework)' == 'netcoreapp3.0' " Sdk="Microsoft.NET.Sdk.Wpf" Project="../targets/Microsoft.NET.Sdk.Wpf.targets" />
+  <Import Condition=" '$(TargetFramework)' == 'netcoreapp3.0' " Sdk="Microsoft.NET.Sdk.WindowsDesktop" Project="../targets/Microsoft.NET.Sdk.WindowsDesktop.targets" />
 </Project>
